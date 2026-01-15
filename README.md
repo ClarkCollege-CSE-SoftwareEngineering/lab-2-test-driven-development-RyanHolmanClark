@@ -214,6 +214,8 @@ npm test
 
 🤔 **Reflection Question:** Why do we intentionally write a failing test first? How does this relate to what Fowler describes as "state verification"?
 
+//TODO
+
 ### Step 2.2: GREEN — Write Minimal Code to Pass
 
 Create `src/cartUtils.ts` with the absolute minimum to pass:
@@ -314,6 +316,8 @@ export function applyDiscount(price: number, discountPercent: number): number {
 Run tests again to ensure nothing broke. Both implementations produce the same results—the refactored version just expresses the math differently.
 
 🤔 **Reflection Question:** In the mockist vs. classicist debate from Fowler's article, which approach are we using here? Why don't we need any test doubles for this function?
+
+This is a classicist approach we are testing the state of our SUT. We do not need and doubles because our SUT does not have any collaborators, we are doing unit testing.
 
 ---
 
@@ -427,6 +431,8 @@ export function calculateTax(
 Run tests again—they should still pass since we're using `toBeCloseTo` for decimal comparisons.
 
 🤔 **Reflection Question:** Notice that we changed the implementation (added rounding), but our tests still pass because we used `toBeCloseTo`. This is what Kent C. Dodds means by "not testing implementation details." What would a test that _does_ test implementation details look like?
+
+//TODO
 
 ---
 
