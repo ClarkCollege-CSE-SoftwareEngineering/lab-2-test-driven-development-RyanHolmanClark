@@ -1,3 +1,33 @@
+**Name** Ryan Holman
+
+**Project Description** In lab 2 I used test driven development to build a shopping cart utility. I followed the classicist approach to TDD and wrote behavior verifying tests before writing the function for the shopping cart. 
+
+**How to run tests** `npm run test` to run all tests. `npm run test:watch` to continually run test as files are edited. `npm run test:coverage` to check test coverage. `npm run build` to build all project files.
+
+**Functions implemented** 
+  **applyDiscount()** takes a price and a discount as a percentage. Return the price after discount.
+    - Accepts a `price`, `discount` as a percentage.
+    - Returns a number for the price after applying the discount.
+  **calculateTax()**
+    - Accepts a `price`, `taxRate` as percentage, and `isTaxExempt`: boolean.
+    - Returns a number for the amount of tax to be charged for that item.
+  **calculateTotal()**
+    - Accepts an array of cart items, each with `price`, `quantity`, and optionally `isTaxExempt`
+    - Accepts a `discountPercent` (applied to subtotal before tax)
+    - Accepts a `taxRate` (applied after discount, only to non-exempt items)
+    - Returns an object with `subtotal`, `discount`, `tax`, and `total`
+
+**Reflection Questions**
+   - How did TDD change the way you approached implementing `calculateTotal`?
+    - TDD made it easier to focus on a smaller piece of the whole function at a time. First I found the subtotal when necessary then wrote a test that needed discount and implement that so on for tax and total.
+
+   - Which of Fowler's test double types (dummy, stub, fake, spy, mock) did you need for this lab? Why or why not?
+    - For each test of calculateTotal() I created a list of CartItems and I would call that a fake. A full shopping software would have more information for the items in a shopping cart but these test required a limited amount of information to verify functionality.
+
+   - What's one thing that would have been different if you wrote the implementation first?
+    - If I had written the implementation first my code would have needed more refactoring in the end. My implementation would have included bits of testing that would have had to be removed at the end to clean it up.
+  
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/72n2o9cT)
 # Lab 2: Test-Driven Development with Vitest
 
@@ -214,7 +244,7 @@ npm test
 
 🤔 **Reflection Question:** Why do we intentionally write a failing test first? How does this relate to what Fowler describes as "state verification"?
 
-//TODO
+We write a failing test as a plan on how we want the system under test and it collaborators to change. The state verification is the process of confirming those changes occurred how we wanted them too. 
 
 ### Step 2.2: GREEN — Write Minimal Code to Pass
 
@@ -432,7 +462,7 @@ Run tests again—they should still pass since we're using `toBeCloseTo` for dec
 
 🤔 **Reflection Question:** Notice that we changed the implementation (added rounding), but our tests still pass because we used `toBeCloseTo`. This is what Kent C. Dodds means by "not testing implementation details." What would a test that _does_ test implementation details look like?
 
-//TODO
+Testing the implementation would be verifying how the rounding was calculated like checking the see that the call the the Math library was made. Instead we are just verify the result it near what we expect it to be. This allow a change to the implementation like not using the Math library in the future with out breaking any tests.
 
 ---
 
